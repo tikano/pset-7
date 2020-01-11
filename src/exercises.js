@@ -50,7 +50,7 @@ function difference(numbers) {
         min = numbers[i]
       } 
     }
-    return max = min;
+    return max - min;
   }
     
 }

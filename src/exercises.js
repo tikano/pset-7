@@ -25,7 +25,7 @@ function endsMeet(values, n) {
   }
   else{
   var newArray = [];
-  for(var i = 0; i < n; i++){
+  for(var i = 0; i < n + 1; i++){
     newArray.push(values[i]);
   }
   for(var i = values.length - n; i < values.length; i++){

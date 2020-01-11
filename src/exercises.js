@@ -56,7 +56,7 @@ function difference(numbers) {
 }
 
 function max(number) {
-  if (!number || number.length < 3 || number.some(isNaN) || numbers.length % 2 == 0) {
+  if (!number || number.length < 3 || number.some(isNaN) || number.length % 2 == 0) {
     return undefined;
   }
   else{

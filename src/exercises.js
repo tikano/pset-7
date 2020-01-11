@@ -42,7 +42,7 @@ function difference(numbers) {
   else{
     var max = Number.MIN_SAFE_INTEGER;
     var min = Number.MAX_SAFE_INTEGER;
-    for(var i = 0;, i < numbers.length; i++){
+    for(var i = 0; i < numbers.length; i++){
       if(numbers[i] > max){
         max = numbers[i];
       }

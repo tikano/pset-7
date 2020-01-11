@@ -36,11 +36,29 @@ function endsMeet(values, n) {
 }
 
 function difference(numbers) {
-  // write your code here
+  if (!numbers || numbers.length < 1 || !numbers.some(isNaN)) {
+    return undefined;
+  }
+  else{
+    var max = Number.MIN_SAFE_INTEGER;
+    var min = Number.MAX_SAFE_INTEGER;
+    for(var i = 0;, i < numbers.length; i++){
+      if(numbers[i] > max){
+        max = numbers[i];
+      }
+      else if(numbers[i] < min){
+        min = numbers[i]
+      } 
+    }
+    return max = min;
+  }
+    
 }
 
 function max(number) {
-  // write your code here
+  if (!numbers || numbers.length < 1 || !numbers.some(isNaN)) {
+    return undefined;
+  }
 }
 
 function middle(values) {

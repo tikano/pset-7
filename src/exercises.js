@@ -20,7 +20,7 @@ function commonEnd(a, b) {
 }
 
 function endsMeet(values, n) {
-  if (!values || values.length < n || Number.isInteger(n) || n < 0) {
+  if (!values || values.length < n || !Number.isInteger(n) || n < 0) {
     return [];
   }
   else{

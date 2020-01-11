@@ -2,12 +2,37 @@ function commonEnd(a, b) {
   if (!a || a.length === 0 || !b || b.length === 0) {
     return false;
   }
+  else{
+  var firsta = a[0];
+  var firstb = b[0];
+  var lasta = a[a.length - 1];
+  var lastb = b[b.length - 1];
+  
+  if(firsta == firstb || lasta == lastb){
+    return true;
+  }
+  else{
+    return false
+  }
+  }
 
   // write your code here
 }
 
 function endsMeet(values, n) {
-  // write your code here
+  if (!values || values.length < n || Number.isInteger(n) || n < 0) {
+    return [];
+  }
+  else{
+  var newArray = [];
+  for(var i = 0; i < n; i++){
+    newArray.push(values[i]);
+  }
+  for(var i = values.length - n; i < values.length; i++){
+    newArray.push(values[i]);
+  }
+  return newArray;
+  }
 }
 
 function difference(numbers) {

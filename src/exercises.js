@@ -46,7 +46,7 @@ function difference(numbers) {
       if(numbers[i] > max){
         max = numbers[i];
       }
-      else if(numbers[i] < min){
+      if(numbers[i] < min){
         min = numbers[i]
       } 
     }

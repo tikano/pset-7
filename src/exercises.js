@@ -36,7 +36,7 @@ function endsMeet(values, n) {
 }
 
 function difference(numbers) {
-  if (!numbers || numbers.length < 1 || !numbers.some(isNaN)) {
+  if (!numbers || numbers.length < 1 || numbers.some(isNaN)) {
     return undefined;
   }
   else{
@@ -56,8 +56,22 @@ function difference(numbers) {
 }
 
 function max(number) {
-  if (!numbers || numbers.length < 1 || !numbers.some(isNaN)) {
+  if (!number || number.length < 3 || number.some(isNaN) || numbers.length % 2 == 0) {
     return undefined;
+  }
+  else{
+    var last = number[number.length - 1];
+    var middle = number[(number.length - 1)/2];
+    var first = number[0];
+    if(last >= middle && last >= first) {
+      return last;
+    }
+    else if(middle >= last && middle >= first) {
+      return middle;
+    }
+    else if(first >= last && first >= middle) {
+      return first;
+    }
   }
 }
 

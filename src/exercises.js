@@ -87,7 +87,7 @@ function middle(values) {
 }
 
 function increasing(numbers) {
-  if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number));){
+  if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number))){
     return false;
   }
   for(var i = 0; i < numbers.length - 2; i++){
@@ -114,7 +114,7 @@ function everywhere(values, x) {
 }
 
 function consecutive(numbers) {
-  if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number));){
+  if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number))){
     return false;
   }
   var consecutive = false;
@@ -140,7 +140,7 @@ function balance(numbers) {
     }
     return sum;
   }
-  if(!numbers || numbers.length < 2 || !numbers.every(number => Number.isInteger(+number));){
+  if(!numbers || numbers.length < 2 || !numbers.every(number => Number.isInteger(+number))){
     return false;
   }
   var firstsum = 0;

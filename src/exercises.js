@@ -129,6 +129,7 @@ function consecutive(numbers) {
         consecutive = true;
       }
     }
+  }
     return consecutive;
 }
 

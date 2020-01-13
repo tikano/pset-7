@@ -98,6 +98,7 @@ function increasing(numbers) {
       return false;
     }
 }
+}
 
 function everywhere(values, x) {
   if(!values || values.length < 1 || !x){

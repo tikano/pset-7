@@ -145,7 +145,7 @@ function balance(numbers) {
   var balance = false;
   for(var i; i < numbers.length; i++){
     firstsum = firstsum + numbers[i];
-    if(firstsum == sum(numbers.slice(i)){
+    if(firstsum == sum(numbers.slice(i))){
        balance = true;
        }
        }

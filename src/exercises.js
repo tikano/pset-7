@@ -76,16 +76,15 @@ function max(number) {
 }
 
 function middle(values) {
-  if(!values || values % 2 == 0 || values.length < 3){
-    var empty = [];
-    return empty;
+  if(!values || values.length % 2 == 0 || values.length < 3){
+    return [];
   }
   else{
   var middleValue = values[(values.length - 1)/2];
   var higherValue = values[(values.length - 1)/2 + 1];
   var lowerValue = values[(values.length - 1)/2 -1];
   var newArray = [lowerValue, middleValue, higherValue];
-  return newArray
+  return newArray;
   }
 }
 

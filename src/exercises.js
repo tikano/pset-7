@@ -105,8 +105,8 @@ function everywhere(values, x) {
     return false;
   }
   var everywhere = true;
-  for(var i = 0; i < numbers.length - 1; i++){
-    if(numbers[i + 1] !== x || numbers[i-1] !== x){
+  for(var i = 0; i < values.length - 1; i++){
+    if(values[i + 1] !== x || values[i-1] !== x){
       everywhere = false;
     }
   }

@@ -76,7 +76,7 @@ function max(number) {
 }
 
 function middle(values) {
-  if(!values || values % 2 == 0 || values < 3){
+  if(!values || values % 2 == 0 || values.length < 3){
     var empty = [];
     return empty;
   }

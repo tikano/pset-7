@@ -77,7 +77,8 @@ function max(number) {
 
 function middle(values) {
   if(!values || values % 2 == 0 || values < 3){
-    return [];
+    var empty = [];
+    return empty;
   }
   var middleValue = values[(values.length - 1)/2];
   var higherValue = values[(values.length - 1)/2 + 1];

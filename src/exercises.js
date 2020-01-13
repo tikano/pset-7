@@ -80,11 +80,13 @@ function middle(values) {
     var empty = [];
     return empty;
   }
+  else{
   var middleValue = values[(values.length - 1)/2];
   var higherValue = values[(values.length - 1)/2 + 1];
   var lowerValue = values[(values.length - 1)/2 -1];
   var newArray = [lowerValue, middleValue, higherValue];
   return newArray
+  }
 }
 
 function increasing(numbers) {

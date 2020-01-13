@@ -87,7 +87,7 @@ function middle(values) {
 }
 
 function increasing(numbers) {
-  if(!numbers || numbers < 3 || !number.some(isInteger)){
+  if(!numbers || numbers.length < 3 || !numbers.some(isInteger)){
     return false;
   }
   for(var i = 0; i < numbers.length - 2; i++){
@@ -100,20 +100,70 @@ function increasing(numbers) {
 }
 
 function everywhere(values, x) {
-  // write your code here
+  if(!values || values.length < 1 || !x){
+    return false;
+  }
+  var everywhere = true;
+  for(var i = 0; i < numbers.length - 1; i++){
+    if(numbers[i + 1] !== x || numbers[i-1] !== x){
+      everywhere = false;
+    }
+  }
+  return everywhere;
 }
 
 function consecutive(numbers) {
-  // write your code here
+  if(!numbers || numbers.length < 3 || !numbers.some(isInteger)){
+    return false;
+  }
+  var consecutive = false;
+  for(var i; i < numbers.length - 2; i++){
+    if(numbers[i] % 2 == 0){
+      if(numbers[i+1] % 2 == 0 && numbers[i-1] % 2 == 0){
+        consecutive = true;
+      }
+    }
+    else{
+      if(numbers[i+1] % 2 == 1 && numbers[i-1] % 2 == 1){
+        consecutive = true;
+      }
+    }
+    return consecutive;
 }
 
 function balance(numbers) {
-  // write your code here
+  function sum(array){
+    for(var i; i < array.length; i++){
+      sum = sum + array[i];
+    }
+    return sum;
+  }
+  if(!numbers || numbers.length < 2 || !numbers.some(isInteger)){
+    return false;
+  }
+  var firstsum = 0;
+  var balance = false;
+  for(var i; i < numbers.length; i++){
+    firstsum = firstsum + numbers[i];
+    if(firstsum == sum(numbers.slice(i)){
+       balance = true;
+       }
+       }
+  return balance;
   console.log("test");
 }
 
 function clumps(values) {
-  // write your code here
+  if(!values){
+    return -1;
+  }
+  var clumps = 0;
+  for(var i; i < values.length; i++){
+    if(values[i] === values[i-1]){
+      clumps = clumps + 1;
+    }
+  }
+  return clumps;
 }
 
 /*

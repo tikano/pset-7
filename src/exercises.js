@@ -76,11 +76,27 @@ function max(number) {
 }
 
 function middle(values) {
-  // write your code here
+  if(!values || values % 2 == 0 || values < 3){
+    return [];
+  }
+  var middleValue = values[(values.length - 1)/2];
+  var higherValue = values[(values.length - 1)/2 + 1];
+  var lowerValue = values[(values.length - 1)/2 -1];
+  var newArray = [lowerValue, middleValue, higherValue];
+  return newArray
 }
 
 function increasing(numbers) {
-  // write your code here
+  if(!numbers || numbers < 3 || !number.some(isInteger)){
+    return false;
+  }
+  for(var i = 0; i < numbers.length - 2; i++){
+    if(numbers[i+2] > numbers[i+1] && numbers[i+1] > numbers[i]){
+      return true;
+    }
+    else{
+      return false;
+    }
 }
 
 function everywhere(values, x) {

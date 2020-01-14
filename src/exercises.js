@@ -163,7 +163,7 @@ function clumps(values) {
     return -1;
   }
   var clumps = 0;
-  for(var i = 0; i < values.length; i++){
+  for(var i = 1; i < values.length; i++){
     if(values[i] === values[i-1]){
       clumps = clumps + 1;
     }

@@ -120,14 +120,14 @@ function consecutive(numbers) {
     return false;
   }
   var consecutive = false;
-  for(var i; i < numbers.length - 2; i++){
+  for(var i = 0; i < numbers.length - 2; i++){
     if(numbers[i] % 2 == 0){
-      if(numbers[i+1] % 2 == 0 && numbers[i-1] % 2 == 0){
+      if(numbers[i+1] % 2 == 0 && numbers[i+2] % 2 == 0){
         consecutive = true;
       }
     }
     else{
-      if(numbers[i+1] % 2 == 1 && numbers[i-1] % 2 == 1){
+      if(numbers[i+1] % 2 == 1 && numbers[i+2] % 2 == 1){
         consecutive = true;
       }
     }

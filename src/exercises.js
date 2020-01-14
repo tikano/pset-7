@@ -137,7 +137,7 @@ function consecutive(numbers) {
 
 function balance(numbers) {
   function sum(array){
-    for(var i; i < array.length; i++){
+    for(var i = 0; i < array.length; i++){
       sum = sum + array[i];
     }
     return sum;
@@ -147,7 +147,7 @@ function balance(numbers) {
   }
   var firstsum = 0;
   var balance = false;
-  for(var i; i < numbers.length; i++){
+  for(var i = 0; i < numbers.length; i++){
     firstsum = firstsum + numbers[i];
     if(firstsum == sum(numbers.slice(i))){
        balance = true;
@@ -162,7 +162,7 @@ function clumps(values) {
     return -1;
   }
   var clumps = 0;
-  for(var i; i < values.length; i++){
+  for(var i = 0; i < values.length; i++){
     if(values[i] === values[i-1]){
       clumps = clumps + 1;
     }

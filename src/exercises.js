@@ -1,24 +1,24 @@
+//commonEnd
 function commonEnd(a, b) {
   if (!a || a.length === 0 || !b || b.length === 0) {
     return false;
   }
   else{
-  var firsta = a[0];
-  var firstb = b[0];
-  var lasta = a[a.length - 1];
-  var lastb = b[b.length - 1];
+	  var firsta = a[0];
+	  var firstb = b[0];
+	  var lasta = a[a.length - 1];
+	  var lastb = b[b.length - 1];
   
-  if(firsta == firstb || lasta == lastb){
-    return true;
-  }
-  else{
-    return false
-  }
-  }
-
-  // write your code here
+	  if(firsta == firstb || lasta == lastb){
+		return true;
+	  }
+	  else{
+		return false
+	  }
+	}
 }
 
+//endsMeet
 function endsMeet(values, n) {
   if (!values || values.length < n || !Number.isInteger(n) || n < 0) {
     return [];
@@ -35,6 +35,7 @@ function endsMeet(values, n) {
   }
 }
 
+//difference
 function difference(numbers) {
   if (!numbers || numbers.length < 1 || numbers.some(isNaN)) {
     return undefined;
@@ -51,10 +52,10 @@ function difference(numbers) {
       } 
     }
     return max - min;
-  }
-    
+  }  
 }
 
+//max
 function max(number) {
   if (!number || number.length < 3 || number.some(isNaN) || number.length % 2 == 0) {
     return undefined;
@@ -75,6 +76,7 @@ function max(number) {
   }
 }
 
+//middle
 function middle(values) {
   if(!values || values.length % 2 == 0 || values.length < 3){
     return [];
@@ -88,6 +90,7 @@ function middle(values) {
   }
 }
 
+//increasing
 function increasing(numbers) {
   if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number))){
     return false;
@@ -96,25 +99,25 @@ function increasing(numbers) {
     if(numbers[i+2] > numbers[i+1] && numbers[i+1] > numbers[i]){
       return true;
     }
-    else{
-      return false;
-    }
-}
+  }
+	return false;
 }
 
+//everywhere
 function everywhere(values, x) {
   if(!values || values.length < 1 || !x){
     return false;
   }
   var everywhere = true;
-  for(var i = 1; i < values.length - 1; i++){
-    if(values[i + 1] !== x || values[i-1] !== x || values[i] === x){
+  for(var i = 0; i < values.length; i++){
+	if(values[i-1] !== x && values[i] !== x && values[i+1] !== x){
       everywhere = false;
     }
   }
   return everywhere;
 }
 
+//consecutive
 function consecutive(numbers) {
   if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number))){
     return false;
@@ -135,6 +138,7 @@ function consecutive(numbers) {
     return consecutive;
 }
 
+//balance
 function balance(numbers) {
   function sum(array){
     var sum = 0;
@@ -150,22 +154,29 @@ function balance(numbers) {
   var balance = false;
   for(var i = 0; i < numbers.length; i++){
     firstsum = firstsum + numbers[i];
-    if(firstsum == sum(numbers.slice(i))){
+	if(firstsum == sum(numbers.slice(i+1))){
        balance = true;
        }
        }
   return balance;
-  console.log("test");
 }
 
+//clumps
 function clumps(values) {
   if(!values){
     return -1;
   }
   var clumps = 0;
-  for(var i = 1; i < values.length; i++){
-    if(values[i] === values[i-1]){
+  var curr = undefined;
+  for(var i = 0; i < values.length; i++){
+    if(values[i] === values[i+1] && values[i] !== curr){
+      curr = values[i];
       clumps = clumps + 1;
+    }
+    else{
+      if (values[i] !== curr){
+        curr = undefined;
+      }
     }
   }
   return clumps;
@@ -173,7 +184,7 @@ function clumps(values) {
 
 /*
  * Exports all functions for use in external grader.js file. Do not modify.
- */
+*/
 
 module.exports = {
   commonEnd,

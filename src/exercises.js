@@ -108,7 +108,7 @@ function everywhere(values, x) {
   }
   var everywhere = true;
   for(var i = 1; i < values.length - 1; i++){
-    if(values[i + 1] !== x || values[i-1] !== x){
+    if(values[i + 1] !== x || values[i-1] !== x || values[i] === x){
       everywhere = false;
     }
   }

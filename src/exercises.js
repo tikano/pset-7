@@ -1,7 +1,10 @@
 //commonEnd
 function commonEnd(a, b) {
-  if (!a || a.length === 0 || !b || b.length === 0) {
+  if (!a || !b) {
     return false;
+  }
+  else if (a.length === 0 || b.length === 0) {
+    return false;	  
   }
   else{
 	  var firsta = a[0];
@@ -20,9 +23,12 @@ function commonEnd(a, b) {
 
 //endsMeet
 function endsMeet(values, n) {
-  if (!values || values.length < n || !Number.isInteger(n) || n < 0) {
+  if (!values || !Number.isInteger(n)) {
     return [];
   }
+  else if (values.length < n || n < 0) {
+    return [];
+  }	  
   else{
   var newArray = [];
   for(var i = 0; i < n; i++){
@@ -37,7 +43,18 @@ function endsMeet(values, n) {
 
 //difference
 function difference(numbers) {
-  if (!numbers || numbers.length < 1 || numbers.some(isNaN)) {
+//this function will pass the test for [1, 2, "", 4] also
+  function checkNumber(number) {
+    return typeof number != 'number';
+  } 
+  if (!numbers) {
+    return undefined;
+  }
+  else if (numbers.some(checkNumber) || numbers.some(isNaN)) {
+    //need both conditions, because typeof NaN === 'number'
+    return undefined;
+  }
+  else if (numbers.length < 1) {
     return undefined;
   }
   else{

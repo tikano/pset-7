@@ -16,7 +16,7 @@ function commonEnd(a, b) {
 		return true;
 	  }
 	  else{
-		return false
+		return false;
 	  }
 	}
 }
@@ -30,27 +30,27 @@ function endsMeet(values, n) {
     return [];
   }	  
   else{
-  var newArray = [];
-  for(var i = 0; i < n; i++){
-    newArray.push(values[i]);
-  }
-  for(var i = values.length - n; i < values.length; i++){
-    newArray.push(values[i]);
-  }
-  return newArray;
+	  var newArray = [];
+	  for(var i = 0; i < n; i++){
+		newArray.push(values[i]);
+	  }
+	  for(var i = values.length - n; i < values.length; i++){
+		newArray.push(values[i]);
+	  }
+	  return newArray;
   }
 }
 
 //difference
+  //this function will pass the test for [1, 2, "", 4] also
 function difference(numbers) {
-//this function will pass the test for [1, 2, "", 4] also
-  function checkNumber(number) {
+  function checkNumbers(number) {
     return typeof number != 'number';
   } 
   if (!numbers) {
     return undefined;
   }
-  else if (numbers.some(checkNumber) || numbers.some(isNaN)) {
+  else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
     //need both conditions, because typeof NaN === 'number'
     return undefined;
   }
@@ -58,29 +58,40 @@ function difference(numbers) {
     return undefined;
   }
   else{
-    var max = Number.MIN_SAFE_INTEGER;
-    var min = Number.MAX_SAFE_INTEGER;
-    for(var i = 0; i < numbers.length; i++){
-      if(numbers[i] > max){
-        max = numbers[i];
-      }
-      if(numbers[i] < min){
-        min = numbers[i]
-      } 
-    }
-    return max - min;
+	var max = Number.MIN_SAFE_INTEGER;
+	var min = Number.MAX_SAFE_INTEGER;
+	for(var i = 0; i < numbers.length; i++){
+	  if(numbers[i] > max){
+		max = numbers[i];
+	  }
+	  if(numbers[i] < min){
+		min = numbers[i];
+	  } 
+	}
+	return max - min;
   }  
 }
 
 //max
-function max(number) {
-  if (!number || number.length < 3 || number.some(isNaN) || number.length % 2 == 0) {
+  //this function will pass the test for [1, 2, "", 4, 5] also
+function max(numbers) {
+  function checkNumbers(number) {
+    return typeof number != 'number';
+  }
+  if (!numbers) {
+    return undefined;
+  }
+  else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
+    //need both conditions, because typeof NaN === 'number'
+    return undefined;
+  }
+  else if (numbers.length < 3 || numbers.length % 2 == 0) {
     return undefined;
   }
   else{
-    var last = number[number.length - 1];
-    var middle = number[(number.length - 1)/2];
-    var first = number[0];
+    var last = numbers[numbers.length - 1];
+    var middle = numbers[(numbers.length - 1)/2];
+    var first = numbers[0];
     if(last >= middle && last >= first) {
       return last;
     }
@@ -95,22 +106,41 @@ function max(number) {
 
 //middle
 function middle(values) {
-  if(!values || values.length % 2 == 0 || values.length < 3){
+  if(!values){
+    return [];
+  }
+  else if(values.length % 2 == 0 || values.length < 3){
     return [];
   }
   else{
-  var middleValue = values[(values.length - 1)/2];
-  var higherValue = values[(values.length - 1)/2 + 1];
-  var lowerValue = values[(values.length - 1)/2 -1];
-  var newArray = [lowerValue, middleValue, higherValue];
-  return newArray;
+    var middleValue = values[(values.length - 1)/2];
+    var higherValue = values[(values.length - 1)/2 + 1];
+    var lowerValue = values[(values.length - 1)/2 -1];
+    var newArray = [lowerValue, middleValue, higherValue];
+
+    return newArray;
   }
 }
 
 //increasing
+  //this function will pass the test for ["", 1, 2] also
+  //this function will pass the test for [0, 1.55, 2] also
 function increasing(numbers) {
-  if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number))){
+  function checkNumbers(number) {
+    return typeof number != 'number';
+  }
+  if(!numbers){
     return false;
+  }
+  else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
+    //need both conditions, because typeof NaN === 'number'
+    return false;
+  }
+  else if(numbers.length < 3){
+      return false;
+  }
+  else if(!numbers.every(number => Number.isInteger(+number))){
+      return false;
   }
   for(var i = 0; i < numbers.length - 2; i++){
     if(numbers[i+2] > numbers[i+1] && numbers[i+1] > numbers[i]){

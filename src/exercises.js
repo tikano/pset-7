@@ -1,9 +1,11 @@
 //commonEnd
 function commonEnd(a, b) {
   if (!a || !b) {
+	  //a and b must not be undefined
     return false;
   }
   else if (a.length === 0 || b.length === 0) {
+	  //a and b must have a length of at least 1
     return false;	  
   }
   else{
@@ -12,7 +14,7 @@ function commonEnd(a, b) {
 	  var lasta = a[a.length - 1];
 	  var lastb = b[b.length - 1];
   
-	  if(firsta == firstb || lasta == lastb){
+	  if(firsta === firstb || lasta === lastb){
 		return true;
 	  }
 	  else{
@@ -23,10 +25,17 @@ function commonEnd(a, b) {
 
 //endsMeet
 function endsMeet(values, n) {
-  if (!values || !Number.isInteger(n)) {
+  if (!values) {
+	  //values must not be undefined
     return [];
   }
+  else if (!Number.isInteger(n)) {
+	  //n must be a non-negative integer (here checking for integer)
+    return [];
+  }	  
   else if (values.length < n || n < 0) {
+	  //n must be a non-negative integer (here checking for positive)
+	  //values must have a length of at least n
     return [];
   }	  
   else{
@@ -48,13 +57,16 @@ function difference(numbers) {
     return typeof number != 'number';
   } 
   if (!numbers) {
+	  //numbers must not be undefined
     return undefined;
   }
   else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
-    //need both conditions, because typeof NaN === 'number'
+	  //numbers must be entirely numeric
+      //need both conditions, because typeof NaN === 'number'
     return undefined;
   }
   else if (numbers.length < 1) {
+	  //numbers must have a length of at least 1
     return undefined;
   }
   else{
@@ -79,13 +91,16 @@ function max(numbers) {
     return typeof number != 'number';
   }
   if (!numbers) {
+	  //numbers must not be undefined
     return undefined;
   }
   else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
-    //need both conditions, because typeof NaN === 'number'
+	  //numbers must be entirely numeric
+      //need both conditions, because typeof NaN === 'number'
     return undefined;
   }
   else if (numbers.length < 3 || numbers.length % 2 == 0) {
+	  //numbers must have an odd length of at least 3
     return undefined;
   }
   else{
@@ -107,9 +122,11 @@ function max(numbers) {
 //middle
 function middle(values) {
   if(!values){
+	  //values must not be undefined
     return [];
   }
   else if(values.length % 2 == 0 || values.length < 3){
+	  //values must have an odd length of at least 3
     return [];
   }
   else{
@@ -130,35 +147,47 @@ function increasing(numbers) {
     return typeof number != 'number';
   }
   if(!numbers){
+	  //numbers must not be undefined
     return false;
   }
   else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
+	//numbers must be entirely numeric
     //need both conditions, because typeof NaN === 'number'
     return false;
   }
   else if(numbers.length < 3){
+		//numbers must have a length of at least 3
       return false;
   }
   else if(!numbers.every(number => Number.isInteger(+number))){
+	    //numbers must contain only integers
       return false;
   }
-  for(var i = 0; i < numbers.length - 2; i++){
-    if(numbers[i+2] > numbers[i+1] && numbers[i+1] > numbers[i]){
-      return true;
-    }
-  }
+  else {
+	  for(var i = 0; i < numbers.length - 2; i++){
+		if(numbers[i+2] > numbers[i+1] && numbers[i+1] > numbers[i]){
+		  return true;
+		}
+	  }
 	return false;
+  }
 }
 
 //everywhere
 function everywhere(values, x) {
-  if(!values || values.length < 1 || !x){
+  if(!values || !x){
+	  //values must not be undefined  and  x must not be undefined
+    return false;
+  }
+else if(values.length < 1){
+	  //values must have a length of at least 1
     return false;
   }
   var everywhere = true;
   for(var i = 0; i < values.length; i++){
 	if(values[i-1] !== x && values[i] !== x && values[i+1] !== x){
       everywhere = false;
+      break;	//get out of the FOR loop if any one false case is found
     }
   }
   return everywhere;
@@ -166,26 +195,47 @@ function everywhere(values, x) {
 
 //consecutive
 function consecutive(numbers) {
-  if(!numbers || numbers.length < 3 || !numbers.every(number => Number.isInteger(+number))){
+  function checkNumbers(number) {
+    return typeof number != 'number';
+  }
+  if(!numbers){
+	  //numbers must not be undefined
     return false;
   }
-  var consecutive = false;
-  for(var i = 0; i < numbers.length - 2; i++){
-    if(numbers[i] % 2 == 0){
-      if(numbers[i+1] % 2 == 0 && numbers[i+2] % 2 == 0){
-        consecutive = true;
-      }
-    }
-    else{
-      if(numbers[i+1] % 2 == 1 && numbers[i+2] % 2 == 1){
-        consecutive = true;
-      }
-    }
+  else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
+	  //numbers must be entirely numeric
+      //need both conditions, because typeof NaN === 'number'
+    return false;
   }
-    return consecutive;
+  else if(numbers.length < 3){
+		//numbers must have a length of at least 3
+      return false;
+  }
+  else if(!numbers.every(number => Number.isInteger(+number))){
+		//numbers must contain only integers
+      return false;
+  }
+  else {
+    var consecutive = false;
+    for(var i = 0; i < numbers.length - 2; i++){
+      if(numbers[i] % 2 == 0){
+        if(numbers[i+1] % 2 == 0 && numbers[i+2] % 2 == 0){
+          consecutive = true;
+        }
+      }
+      else{
+        if(numbers[i+1] % 2 == 1 && numbers[i+2] % 2 == 1){
+          consecutive = true;
+        }
+      }
+    }
+      return consecutive;
+  }
 }
 
 //balance
+  //this function will pass the test for [1, ""] also
+  //this function will pass the test for [1, 1.34] also
 function balance(numbers) {
   function sum(array){
     var sum = 0;
@@ -194,23 +244,43 @@ function balance(numbers) {
     }
     return sum;
   }
-  if(!numbers || numbers.length < 2 || !numbers.every(number => Number.isInteger(+number))){
+  function checkNumbers(number) {
+    return typeof number != 'number';
+  }
+  if(!numbers){
+	  //numbers must not be undefined
     return false;
   }
-  var firstsum = 0;
-  var balance = false;
-  for(var i = 0; i < numbers.length; i++){
-    firstsum = firstsum + numbers[i];
-	if(firstsum == sum(numbers.slice(i+1))){
-       balance = true;
-       }
-       }
-  return balance;
+  else if (numbers.some(checkNumbers) || numbers.some(isNaN)) {
+	  //numbers must be entirely numeric
+	  //need both conditions, because typeof NaN === 'number'
+    return false;
+  }
+  else if(numbers.length < 2){
+		//numbers must have a length of at least 2
+      return false;
+  }
+  else if(!numbers.every(number => Number.isInteger(+number))){
+		//numbers must contain only integers
+      return false;
+  }
+  else {
+	var firstsum = 0;
+	var balance = false;
+	for(var i = 0; i < numbers.length; i++){
+		firstsum = firstsum + numbers[i];
+		if(firstsum == sum(numbers.slice(i+1))){
+		   balance = true;
+		}
+	}
+	  return balance;
+  }
 }
 
 //clumps
 function clumps(values) {
   if(!values){
+	  //values must not be undefined
     return -1;
   }
   var clumps = 0;
